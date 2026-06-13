@@ -1,98 +1,197 @@
-///Smart Disaster Evacuation Planner
+# 🌍 Smart Disaster Evacuation Planner
 
-This is Smart Disaster Evacuation Planner which is a web-based system that calculates the safest path between cities based on real
-time disaster risk values and distance between them through values recived from hardware. The logic behind this is Dijkstra's 
-Algorithm to compute safest + shorteest path and display the map on Ui. We demonstrated this using the Uttarkhand map.
+Smart Disaster Evacuation Planner is a web-based disaster management system that calculates the safest evacuation route between cities using real-time disaster risk data received from hardware sensors.
 
+The system combines **real-time ESP32 sensor data**, **weighted Dijkstra's Algorithm**, and **interactive map visualization** to find the safest and shortest possible route during disaster situations.
 
-///Features
+The project was demonstrated using the **Uttarakhand map** as a disaster simulation environment.
 
-Real-time disaster risk data from ESP32
-Safest path calculation using weighted Dijkstra algorithm
-Interactive map with highlighted safe route
-Live risk table updates
-Serial communication using Web Serial API
-Clean UI for selecting start and destination cities
-Color-coded risk levels
-Simple, lightweight front-end (HTML + JS)
+---
 
+# 🚀 Features
 
-///Project Structure
+- 🌐 Real-time disaster risk data collection using ESP32
+- 🛣️ Safest path calculation using Weighted Dijkstra Algorithm
+- 🗺️ Interactive map visualization with highlighted safe routes
+- 📊 Live disaster risk table updates
+- 🔌 Serial communication using Web Serial API
+- 📍 Start and destination city selection
+- 🎨 Color-coded disaster risk levels
+- ⚡ Lightweight and responsive frontend interface
 
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
+- HTML
+- CSS
+- JavaScript
+
+## Visualization
+- D3.js (Map Visualization)
+
+## Hardware & Communication
+- ESP32 Development Board
+- Web Serial API
+
+## Algorithm
+- Dijkstra's Algorithm
+
+## Sensors Used
+- Water Level Sensor
+- Vibration Sensor
+- Flame Sensor
+- DHT11 / DHT22 Temperature & Humidity Sensor
+
+---
+
+# 📂 Project Structure
+
+```text
 Smart-Disaster-Planner/
-|--- index.html
-|--- serial.js
-|--- README.md
-|--- esp32code.ino
 
+│
+├── index.html
+├── serial.js
+├── esp32code.ino
+├── README.md
+```
 
-///Technologies Used
+---
 
-HTML, CSS, JavaScript
-D3.js (map visualization)
-Web Serial API (ESP32 connection)
-Dijkstra Algorithm
-ESP32 with sensors (water, vibration, flame, DHT11 etc.)
+# ⚙️ Installation & Setup
 
+## 1. Run the Project
 
-///Installation / Setup
+Clone the repository:
 
-1. Open the project
-Just open index.html in your browser
-OR run using
+```bash
+git clone https://github.com/ankita12365/Smart-Disaster-Evacuation-Planner.git
+```
+
+Open the project folder:
+
+```bash
+cd Smart-Disaster-Evacuation-Planner
+```
+
+Run the application:
+
+Option 1:
+- Open `index.html` directly in your browser
+
+Option 2:
+Run using local server:
+
+```bash
 npx http-server
+```
 
-2. Connect ESP32
-Plug ESP32 into USB
-Click Connect Serial on webpage
-ESP32 must send JSON formatted data like:
-{ "Haridwar": { "flood": 2, "fire": 1, "vibration": 0 } }
+---
 
+# 🔌 ESP32 Setup
 
-/// How It Works
+1. Connect ESP32 board using USB cable
+2. Upload `esp32code.ino` to ESP32
+3. Open the webpage
+4. Click on **Connect Serial**
+5. ESP32 starts sending live disaster data
 
-User selects start and destination cities
-ESP32 sends live risk values
-System updates the risk-weighted graph
-Dijkstra algorithm finds the minimum-risk path
-Map highlights the safest route with animations
+Example JSON format:
 
+```json
+{
+  "Haridwar": {
+    "flood": 2,
+    "fire": 1,
+    "vibration": 0
+  }
+}
+```
 
-///Hardware Setup
+---
 
-Components:
-ESP32 Dev Board
-Water Sensor
-Vibration Sensor
-Flame Sensor
-DHT11/DHT22
-Jumper Wires
-USB Cable
-ESP32 should print JSON via Serial:
-{"city":"Haridwar","flood":2,"fire":1}
+# 🧠 How It Works
 
-Algorithm Used – Dijkstra
+1. User selects source and destination cities
+2. ESP32 collects real-time disaster sensor values
+3. Sensor data is transmitted through Web Serial API
+4. System updates the risk-weighted graph
+5. Weighted Dijkstra Algorithm calculates the safest route
+6. The map highlights the recommended evacuation path
 
-Each city = Node
-Each road = Edge
-Edge weight = Distance + Disaster Risk
-Output = Path with minimum combined cost
-Best for safe route calculation because it is fast and reliable.
+---
 
+# 🔬 Algorithm Used — Dijkstra Algorithm
 
-//Future Improvements
+The project uses a modified version of Dijkstra's Algorithm.
 
-GPS tracking
-AI-based disaster prediction
-Weather API
-Google Maps integration
-Database for storing risk history
+### Graph Representation
 
-//Contributors
+- Each city → Node
+- Each road → Edge
+- Edge weight → Distance + Disaster Risk
 
-Riddhi Chopda
-Ankita Chavan
-Palak Chandak
-Bhumika Chaure
+### Output
 
-Guided By Prof. Rakhi Bharadwaj
+The algorithm finds the path with the minimum combined risk and distance.
+
+Dijkstra Algorithm is used because it is:
+- Fast
+- Reliable
+- Efficient for shortest/safest path calculations
+
+---
+
+# 🔧 Hardware Setup
+
+## Components
+
+- ESP32 Development Board
+- Water Sensor
+- Vibration Sensor
+- Flame Sensor
+- DHT11/DHT22 Sensor
+- Jumper Wires
+- USB Cable
+
+ESP32 sends disaster data through Serial communication:
+
+```json
+{
+ "city":"Haridwar",
+ "flood":2,
+ "fire":1
+}
+```
+
+---
+
+# 🔮 Future Improvements
+
+- GPS-based live location tracking
+- AI-based disaster prediction
+- Weather API integration
+- Google Maps integration
+- Cloud database for storing disaster history
+- Mobile application support
+
+---
+
+# 👩‍💻 Contributors
+
+- Riddhi Chopda
+- Ankita Chavan
+- Palak Chandak
+- Bhumika Chaure
+
+---
+
+# 👩‍🏫 Guided By
+
+**Prof. Rakhi Bharadwaj**
+
+---
+
+⭐ This project focuses on combining IoT, algorithms, and web technologies to create an intelligent disaster evacuation support system.
