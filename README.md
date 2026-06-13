@@ -208,10 +208,3 @@ The algorithm finds the path with the minimum combined risk and distance.
 
 ---
 
-# 👩‍🏫 Guided By
-
-**Prof. Rakhi Bharadwaj**
-
----
-
-⭐ An IoT + Algorithm-based solution for intelligent disaster evacuation planning.
